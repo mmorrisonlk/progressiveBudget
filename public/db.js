@@ -46,13 +46,13 @@ function checkDatabase() {
   }
 }
 
-request.onsuccess = function (event) {
+request.onsuccess = function (e) {
   console.log('success');
-  db = event.target.result;
+  db = e.target.result;
 
   if (navigator.onLine) {
     console.log('Back online!');
-    checkDB();
+    checkDatabase();
   }
 };
 
@@ -66,4 +66,4 @@ const saveRecord = (record) => {
   store.add(record);
 };
 
-window.addEventListener('online', checkDB);
+window.addEventListener('online', checkDatabase);
