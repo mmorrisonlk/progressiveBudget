@@ -6,7 +6,7 @@ const request = indexedDB.open("BudgetDB", 25 || 21);
 request.onupgradeneeded = function (e) {
   db = e.target.result;
   if (db.objectStoreNames.length === 0) {
-    db.createObjectStore("BudgetStore", { autoIncrement: true });
+    db.createObjectStore('BudgetStore', { autoIncrement: true });
   }
 };
 
@@ -16,8 +16,8 @@ request.onerror -
   };
 
 function checkDatabase() {
-  let transaction = db.transaction(["BudgetStore"], "readwrite");
-  const store = transaction.objectStore("BudgetStore");
+  let transaction = db.transaction(['BudgetStore'], "readwrite");
+  const store = transaction.objectStore('BudgetStore');
   const getAll = store.getAll();
 
   getAll.onsuccess = function () {
@@ -56,7 +56,7 @@ request.onSuccess = function (e) {
 
 const saveRecord = (record) => {
   const transaction = db.transaction(['BudgetStore'], 'readwrite');
-  const store = transaction.objectStore("BudgetStore");
+  const store = transaction.objectStore('BudgetStore');
 
   store.add(record);
 };
