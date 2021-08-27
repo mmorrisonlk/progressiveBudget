@@ -1,7 +1,7 @@
 let db;
 let budgetVersion;
 
-const request = indexedDB.open("BudgetDB", budgetVersion || 21);
+const request = indexedDB.open("BudgetDB", 25 || 21);
 
 request.onupgradeneeded = function (e) {
   db = e.target.result;
@@ -33,7 +33,7 @@ function checkDatabase() {
         .then((response) => response.json())
         .then((res) => {
           if (res.length !== 0) {
-            transaction = db.transaction.objectStore("BudgetStore");
+            transaction = db.transaction(['BudgetStore'], 'readwrite');
 
             const currentStore = transaction.objectStore("BudgetStore");
 
